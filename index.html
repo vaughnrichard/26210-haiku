@@ -121,6 +121,10 @@
   #seg2 {
     position: flex;
   }
+  
+  #l2 {
+    visibility: hidden;
+  }
 
 </style>
     
@@ -190,6 +194,9 @@ Each segment covers themes covered by each line
   const segs = document.getElementsByClassName('seg');
   const seg1 = segs[0]; const seg2 = segs[1]; const seg3 = segs[2];
   
+  const lines = document.getElementsByClassName('line');
+  const l1 = lines[0]; const l2 = lines[1]; const l3 = lines[2];
+  
   const l2texts = document.getElementsByClassName('l2text');
   
   for (let i = 0; i < l2texts.length; i++) {
@@ -197,11 +204,14 @@ Each segment covers themes covered by each line
     
     currText.style.position = 'absolute';
     
-    const topPos =  375 + ((Math.cos( (Math.PI / 3) * i - Math.PI ) * 50) / window.innerHeight * 100;
-    const leftPos = 45 + ((Math.sin( (Math.PI / 3) * i - Math.PI ) * 80) / window.innerWidth * 100);
+    const topPos =  373 + ((Math.cos( (Math.PI / 3) * i - Math.PI ) * 120) / window.innerHeight * 100);
+    const leftPos = 45 + ((Math.sin( (Math.PI / 3) * i - Math.PI ) * 170) / window.innerWidth * 100);
     
     currText.style.top = topPos + 'vh';
     currText.style.left = leftPos + 'vw';
+    
+    currText.style.visibility = 'hidden';
+
   }
     
   function clamp(val, min, max) {
@@ -213,6 +223,22 @@ Each segment covers themes covered by each line
     console.log(percent_white);
     seg1.style.backgroundImage = 'radial-gradient(circle, white 0%, black '+ percent_white + '%)';
   }
+  
+  let hasTriggerd = false
+  
+  function seg2Handler(percent_vh) {
+    if (percent_vh * 100 >= 350 && !hasTriggerd) {
+      l2.style.visibility = 'visible';
+      
+      for (let i = 0; i < l2texts.length; i++) {
+        const currText = l2texts[i];
+
+        setTimeout(() => {
+          currText.style.visibility = 'visible';
+        }, 300 * (i+1) + 300)
+      }
+    }
+  }
 
     window.addEventListener("scroll", function() {
         const scrollPosition = window.scrollY;
@@ -220,6 +246,7 @@ Each segment covers themes covered by each line
         const percent_vh = 0.5 + (scrollPosition / window.innerHeight);
 
       seg1Handler(percent_vh);
+      seg2Handler(percent_vh);
     });
   // }
   
