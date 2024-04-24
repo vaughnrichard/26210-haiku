@@ -197,8 +197,8 @@ Each segment covers themes covered by each line
     
     currText.style.position = 'absolute';
     
-    const topPos =  (375 + (Math.cos( (Math.PI / 3) * i - Math.PI ) * 50) / window.innerHeight);
-    const leftPos = (45 + Math.sin( (Math.PI / 3) * i - Math.PI ) * 80) / window.innerWidth;
+    const topPos =  375 + ((Math.cos( (Math.PI / 3) * i - Math.PI ) * 50) / window.innerHeight * 100;
+    const leftPos = 45 + ((Math.sin( (Math.PI / 3) * i - Math.PI ) * 80) / window.innerWidth * 100);
     
     currText.style.top = topPos + 'vh';
     currText.style.left = leftPos + 'vw';
