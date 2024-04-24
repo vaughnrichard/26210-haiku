@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
@@ -16,20 +18,26 @@
   }
   
   .seg {
-    display: flex;
+/*     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     
     height: 250vh;
     width: 100%;
     
 /*     background-color: black; */
-    background-image: radial-gradient(circle, white 0%, black 20%);
+    background-image: radial-gradient(circle, white 0%, white 20%);
     color: black;
   }
   
+  .line {
+    top: 0;    
+    margin: 0px;
+    
+  }
+  
   #blood {
-    position: relative;
+    display: absolute;
     
     padding: 4px;
   }
@@ -47,7 +55,7 @@
   .drop {
     background-color: red;
     
-    position: absolute;
+    position: relative;
     
     width: 5px;
     height: 5px;
@@ -55,10 +63,10 @@
     animation: animateDrop 1s ease-in infinite;
   }
   
-  #drop1 { left: 7px; animation-delay: .1s; }
-  #drop2 { left: 15px; animation-delay: .07s; }
-  #drop3 { left: 27px; animation-delay: .3s; }
-  #drop4 { left: 41px; animation-delay: .5s; }
+  #drop1 { left: 97%; animation-delay: .1s; }
+  #drop2 { left: 95%; animation-delay: .07s; }
+  #drop3 { left: 85%; animation-delay: .3s; }
+  #drop4 { left: 90%; animation-delay: .5s; }
 
 </style>
     
@@ -77,14 +85,13 @@ Each segment covers themes covered by each line
       
     <div id="seg1" class="seg">
       
-    <p id="l1" class="line"> tech covered in
-      <div id="blood"> blood
-        <div id="drop1" class="drop"></div>
-        <div id="drop2" class="drop"></div>
-        <div id="drop3" class="drop"></div>
-        <div id="drop4" class="drop"></div>
-      </div>
-    </p>
+    <div id="blood">
+    <p id="l1" class="line"> tech covered in blood</p>
+      <div id="drop1" class="drop"></div>
+      <div id="drop2" class="drop"></div>
+      <div id="drop3" class="drop"></div>
+      <div id="drop4" class="drop"></div>
+    </div>  
       
     </div>
       
@@ -105,11 +112,37 @@ Each segment covers themes covered by each line
       
     </div>
     
+    
+    
 	</body>
 
+</html>
+
+
 <script>
+  /* global nn */
   
-  // const seg1 = nn.
+    console.log('here');
+
+  
+  const seg1 = nn.get('seg1');
+  const seg2 = nn.get('seg2');
+  const seg3 = nn.get('seg3');
+  
+  const l1 = nn.get('l1');
+  const l2 = nn.get('l2');
+  const l3 = nn.get('l3');
+  
+  const blood = nn.get('blood');
+  
+  console.log('here');
+  
+  window.addEventListener("scroll", function() {
+      const scrollPosition = window.scrollY;
+    
+      blood.css({
+        top: scrollPosition + 'px'
+      });
+  });
 
 </script>
-</html>
