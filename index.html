@@ -29,8 +29,36 @@
   }
   
   #blood {
+    position: relative;
+    
     padding: 4px;
   }
+  
+  @keyframes animateDrop {
+    0% {
+      top: 17px;
+    }
+    
+    100% {
+      top: 40vh;
+    }
+  }
+  
+  .drop {
+    background-color: red;
+    
+    position: absolute;
+    
+    width: 5px;
+    height: 5px;
+    
+    animation: animateDrop 1s ease-in infinite;
+  }
+  
+  #drop1 { left: 7px; animation-delay: .1s; }
+  #drop2 { left: 15px; animation-delay: .07s; }
+  #drop3 { left: 27px; animation-delay: .3s; }
+  #drop4 { left: 41px; animation-delay: .5s; }
 
 </style>
     
@@ -50,7 +78,12 @@ Each segment covers themes covered by each line
     <div id="seg1" class="seg">
       
     <p id="l1" class="line"> tech covered in
-      <div id="blood"> blood </div>
+      <div id="blood"> blood
+        <div id="drop1" class="drop"></div>
+        <div id="drop2" class="drop"></div>
+        <div id="drop3" class="drop"></div>
+        <div id="drop4" class="drop"></div>
+      </div>
     </p>
       
     </div>
@@ -73,4 +106,10 @@ Each segment covers themes covered by each line
     </div>
     
 	</body>
+
+<script>
+  
+  // const seg1 = nn.
+
+</script>
 </html>
